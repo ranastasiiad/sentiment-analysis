@@ -63,8 +63,7 @@ def light_text_cleaning(df, review_column):
         # html
         text = BeautifulSoup(text, 'lxml').text
         # ненужные символы и знаки
-        text = re.sub('[+\-*/]', '', text)
-        text = re.sub('\d+(\.\d*)?', '', text)
-        df['tidy_review'][j] = text
+        text = re.sub(r"-()\"#/@;:<>{}-=~|.?,", "", text)
+        df['tidy_review'][j] = text + 'hihi'
 
     return df
