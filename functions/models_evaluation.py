@@ -12,7 +12,7 @@ def cv_score(
         metric=roc_auc_score,  # metric from competition
         n_splits=5,
         shuffle=False,
-        random_state=42):
+        random_state=None:
 
     kf = KFold(n_splits=n_splits, shuffle=shuffle, random_state=random_state)
     metrics = list()
