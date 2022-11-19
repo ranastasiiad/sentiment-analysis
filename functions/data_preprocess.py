@@ -58,12 +58,11 @@ def light_text_cleaning(df, review_column):
     for j in tqdm(range(df.shape[0])):
         # берем один отзыв
         text = df[f'{review_column}'][j]
-        # все слова к одному регистру
-        # text = text.lower()
         # html
         text = BeautifulSoup(text, 'lxml').text
         # ненужные символы и знаки
-        text = re.sub(r"-()\"#/@;:<>{}-=~|.?,", "", text)
-        df['tidy_review'][j] = text + 'hihi'
+        text = "".join([p for p in text if p not in punct])
+
+        df['tidy_review'][j] = text
 
     return df
